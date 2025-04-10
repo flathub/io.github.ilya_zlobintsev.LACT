@@ -1,6 +1,6 @@
 app-id: io.github.ilya_zlobintsev.LACT
 runtime: org.gnome.Platform
-runtime-version: "48"
+runtime-version: '48'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
@@ -16,11 +16,11 @@ finish-args:
 cleanup:
   - /include
   - /share/vulkan/registry
-  - "*.a"
+  - '*.a'
   - /lib/pkgconfig
 modules:
   - name: lact
-    buildsystem: simple 
+    buildsystem: simple
     sources:
       - type: archive
         url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.3.tar.gz
@@ -33,17 +33,17 @@ modules:
       - type: patch
         path: drm-path.patch
     build-options:
-      append-path: "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin"
-      prepend-ld-library-path: "/usr/lib/sdk/llvm20/lib"
+      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
       env:
-        CARGO_HOME: "/run/build/lact/cargo"
-        PREFIX: "/app"
+        CARGO_HOME: /run/build/lact/cargo
+        PREFIX: /app
     build-commands:
       - cargo --offline fetch --manifest-path Cargo.toml
       - cargo --offline build -p lact --features flatpak --release
       - make install
       - install -Dm755 flatpak/startup.sh /app/bin/startup.sh
-      - desktop-file-edit --set-key Exec --set-value startup.sh /app/share/applications/io.github.ilya_zlobintsev.LACT.desktop 
+      - desktop-file-edit --set-key Exec --set-value startup.sh /app/share/applications/io.github.ilya_zlobintsev.LACT.desktop
     modules:
       - name: yad
         config-opts:
@@ -73,8 +73,8 @@ modules:
       - -DBUILD_VULKANINFO=ON
     sources:
       - type: archive
-        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.311/Vulkan-Tools-1.4.311.tar.gz
-        sha256: 7113bc0c746b45072e269fada0d684b4ae9de609c38d9e764b59793b14120a7b
+        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.312/Vulkan-Tools-1.4.312.tar.gz
+        sha256: e7052a8ac9ba730442cf5ca87dba28ac5b6bd3b3f9e55cfc115e14081a9f5fec
         x-checker-data:
           type: anitya
           project-id: 242111
@@ -97,8 +97,8 @@ modules:
             buildsystem: cmake-ninja
             sources:
               - type: archive
-                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.311/Vulkan-Headers-v1.4.311.tar.gz
-                sha256: 7989c360b870bcc2de52b9fd626fd2ba7a212fe177ade3aa3a10b2bcb61f8689
+                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.312/Vulkan-Headers-v1.4.312.tar.gz
+                sha256: 0f1eb34aa1182baf636e3dbedc9e9ce0acad87794ea15e94378b5deeeb17463f
                 x-checker-data:
                   type: anitya
                   project-id: 88835
