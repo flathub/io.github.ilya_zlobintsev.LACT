@@ -22,18 +22,18 @@ modules:
   - name: lact
     buildsystem: simple 
     sources:
-      - type: archive
-        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.3.tar.gz
-        sha256: 212ac1eadcbc8d7112b7ee11176c6ab0aee04f53bda9cfb342679c2e1cf6a230
-        x-checker-data:
-          type: anitya
-          project-id: 372202
-          url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
+      # TODO: switch back to archive after next release
+      #- type: archive
+      #  url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.3.tar.gz
+      #  sha256: 212ac1eadcbc8d7112b7ee11176c6ab0aee04f53bda9cfb342679c2e1cf6a230
+      #  x-checker-data:
+      #    type: anitya
+      #    project-id: 372202
+      #    url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
+      - type: git
+        url: https://github.com/ilya-zlobintsev/LACT
+        commit: 21eee8425aedb33be1180e4705c8ab7e12e924c0
       - generated-sources.json
-      - type: patch
-        path: drm-path.patch
-      - type: patch
-        path: 0001-chore-update-metainfo-releases-list.patch
     build-options:
       append-path: "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin"
       prepend-ld-library-path: "/usr/lib/sdk/llvm20/lib"
