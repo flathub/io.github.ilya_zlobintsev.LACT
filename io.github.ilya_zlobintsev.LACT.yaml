@@ -22,17 +22,13 @@ modules:
   - name: lact
     buildsystem: simple
     sources:
-      # TODO: switch back to archive after next release
-      #- type: archive
-      #  url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.3.tar.gz
-      #  sha256: 212ac1eadcbc8d7112b7ee11176c6ab0aee04f53bda9cfb342679c2e1cf6a230
-      #  x-checker-data:
-      #    type: anitya
-      #    project-id: 372202
-      #    url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
-      - type: git
-        url: https://github.com/ilya-zlobintsev/LACT
-        commit: 21eee8425aedb33be1180e4705c8ab7e12e924c0
+      - type: archive
+        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.4.tar.gz
+        sha256: b6035a65fd641b80a92b753c3e00c13f0c87575221136d509857233bd1984fb2
+        x-checker-data:
+          type: anitya
+          project-id: 372202
+          url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
       - generated-sources.json
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
@@ -90,7 +86,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.313/Vulkan-Tools-1.4.313.tar.gz
-        sha256: 930204695706d0f09075bbe26d935986fad3d63840254cecf751de5ad26ea155
+        sha256: 2a8d5535e51f134e5e962801bf20d4869d26c34ad1d2f1bf2e30f52426662f5b
         x-checker-data:
           type: anitya
           project-id: 242111
