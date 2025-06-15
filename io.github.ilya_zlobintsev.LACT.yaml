@@ -68,8 +68,8 @@ modules:
           - --libdir=/app/drm/lib
         sources:
           - type: archive
-            url: https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.124/drm-libdrm-2.4.124.tar.gz
-            sha256: 49c077f3938147e7c321fe89255eb189c1be68f6ed0aa36e29d38e3db0e84e08
+            url: https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.125/drm-libdrm-2.4.125.tar.gz
+            sha256: dd3e86a9fae99322d6430b28397f8e03ac4fb8deeed9a6e214bd5ced86db68c6
             x-checker-data:
               type: anitya
               project-id: 1596
@@ -85,8 +85,8 @@ modules:
       - -DBUILD_VULKANINFO=ON
     sources:
       - type: archive
-        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.315/Vulkan-Tools-1.4.315.tar.gz
-        sha256: 2caefad09082941af790fda9a5dc5dd776f73124148b1d34ea0e2db1af67c0c0
+        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.318/Vulkan-Tools-1.4.318.tar.gz
+        sha256: ba45d517ac48aa92d34d5ed49bd65e7765d61c2be93f4db367d6d0e8b932dc5b
         x-checker-data:
           type: anitya
           project-id: 242111
@@ -109,8 +109,8 @@ modules:
             buildsystem: cmake-ninja
             sources:
               - type: archive
-                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.315/Vulkan-Headers-v1.4.315.tar.gz
-                sha256: 77e3a78db853f8b9c5bc3ddef04e637bef9744e01d6a8c90ebe0ddcd916c0c50
+                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.318/Vulkan-Headers-v1.4.318.tar.gz
+                sha256: 24df01da8a5c54ee19dfee92259b7edcf44693875fbf96ccdfec69d6e3eef0bc
                 x-checker-data:
                   type: anitya
                   project-id: 88835
