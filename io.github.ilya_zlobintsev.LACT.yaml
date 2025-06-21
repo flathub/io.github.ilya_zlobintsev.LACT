@@ -29,6 +29,7 @@ modules:
           type: anitya
           project-id: 372202
           url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
+          is-main-source: true
       - generated-sources.json
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
