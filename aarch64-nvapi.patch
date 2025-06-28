@@ -1,0 +1,13 @@
+diff --git a/lact-daemon/src/server/gpu_controller/nvidia/nvapi.rs b/lact-daemon/src/server/gpu_controller/nvidia/nvapi.rs
+index dd6a56e7..ed7958d5 100644
+--- a/lact-daemon/src/server/gpu_controller/nvidia/nvapi.rs
++++ b/lact-daemon/src/server/gpu_controller/nvidia/nvapi.rs
+@@ -195,7 +195,7 @@ impl NvApi {
+             }
+             // let text = CStr::from_bytes_until_nul(transmute::<&[i8], &[u8]>(text.as_slice()));
+             let text = CStr::from_bytes_until_nul(
+-                &*(ptr::from_ref::<[i8]>(text.as_slice()) as *const [u8]),
++                &*(ptr::from_ref::<[_]>(text.as_slice()) as *const [_]),
+             );
+             bail!(
+                 "Got error {status:x} from NvAPI: {}",
