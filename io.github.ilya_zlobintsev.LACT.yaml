@@ -19,63 +19,6 @@ cleanup:
   - '*.a'
   - /lib/pkgconfig
 modules:
-  - name: lact
-    buildsystem: simple
-    sources:
-      - type: archive
-        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.7.4.tar.gz
-        sha256: b6035a65fd641b80a92b753c3e00c13f0c87575221136d509857233bd1984fb2
-        x-checker-data:
-          type: anitya
-          project-id: 372202
-          url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
-          is-main-source: true
-      - generated-sources.json
-    build-options:
-      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
-      env:
-        CARGO_HOME: /run/build/lact/cargo
-        PREFIX: /app
-    build-commands:
-      - cargo --offline fetch --manifest-path Cargo.toml
-      - cargo --offline build -p lact --features flatpak --release
-      - make install
-      - install -Dm755 flatpak/startup.sh /app/bin/startup.sh
-      - desktop-file-edit --set-key Exec --set-value startup.sh /app/share/applications/io.github.ilya_zlobintsev.LACT.desktop
-    modules:
-      - name: yad
-        config-opts:
-          - --enable-standalone
-          - --disable-icon-browser
-          - --disable-tools
-        sources:
-          - type: archive
-            url: https://github.com/v1cont/yad/releases/download/v14.1/yad-14.1.tar.xz
-            sha256: dde047a915cd8d3892c32b6ba031876f5cda673e01882c99613f043867c88133
-            x-checker-data:
-              type: anitya
-              project-id: 5280
-              url-template: https://github.com/v1cont/yad/releases/download/v$version/yad-$version.tar.xz
-        cleanup:
-          - /share/icons
-        modules:
-          - shared-modules/intltool/intltool-0.51.json
-      - name: libdrm
-        buildsystem: meson
-        builddir: true
-        config-opts:
-          - -Dtests=false
-          - --libdir=/app/drm/lib
-        sources:
-          - type: archive
-            url: https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-2.4.125/drm-libdrm-2.4.125.tar.gz
-            sha256: dd3e86a9fae99322d6430b28397f8e03ac4fb8deeed9a6e214bd5ced86db68c6
-            x-checker-data:
-              type: anitya
-              project-id: 1596
-              url-template: https://gitlab.freedesktop.org/mesa/drm/-/archive/libdrm-$version/drm-libdrm-$version.tar.gz
-
   - name: vulkan-tools
     buildsystem: cmake-ninja
     config-opts:
@@ -116,3 +59,66 @@ modules:
                   type: anitya
                   project-id: 88835
                   url-template: https://github.com/KhronosGroup/Vulkan-Headers/archive/v$version/Vulkan-Headers-v$version.tar.gz
+
+  - name: flatbox
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 flatbox -t /app/bin/
+    sources:
+      - type: archive
+        only-arches:
+          - x86_64
+        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.5/flatbox-Linux-musl-x86_64.tar.gz
+        strip-components: 0
+        sha256: 6d0abf8b5e553422c2d1c36b04f3b5e750ef9cef2366367d28aae7654f8e0171
+      - type: archive
+        only-arches:
+          - aarch64
+        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.5/flatbox-Linux-musl-arm64.tar.gz
+        strip-components: 0
+        sha256: af5cf366eb345bc5c9289e3d8d19b03371bf31ab1ea35548308a82ccacebde67
+
+  - name: lact
+    buildsystem: simple
+    sources:
+      - type: archive
+        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.0.tar.gz
+        sha256: fe81bf9bfd25a53bf6964b407ba18d24961b7f11ca7ba7ef27e09b846da17931
+        x-checker-data:
+          type: anitya
+          project-id: 372202
+          url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
+          is-main-source: true
+      - generated-sources.json
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+      env:
+        CARGO_HOME: /run/build/lact/cargo
+        PREFIX: /app
+    build-commands:
+      - cargo --offline fetch --manifest-path Cargo.toml
+      - cargo --offline build -p lact --release
+      - make install
+      - install -Dm755 flatpak/startup.sh /app/bin/startup.sh
+      - install -Dm755 flatpak/daemon.sh /app/bin/daemon.sh
+      - desktop-file-edit --set-key Exec --set-value startup.sh /app/share/applications/io.github.ilya_zlobintsev.LACT.desktop
+    modules:
+      - name: yad
+        config-opts:
+          - --enable-standalone
+          - --disable-icon-browser
+          - --disable-tools
+        sources:
+          - type: archive
+            url: https://github.com/v1cont/yad/releases/download/v14.1/yad-14.1.tar.xz
+            sha256: dde047a915cd8d3892c32b6ba031876f5cda673e01882c99613f043867c88133
+            x-checker-data:
+              type: anitya
+              project-id: 5280
+              url-template: https://github.com/v1cont/yad/releases/download/v$version/yad-$version.tar.xz
+        cleanup:
+          - /share/icons
+        modules:
+          - shared-modules/intltool/intltool-0.51.json
+
