@@ -83,15 +83,13 @@ modules:
     sources:
       - type: archive
         url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.0.tar.gz
-        sha256: 968808ffd3d70a11894e251266fcfa54c045ee4d2cf2e6361d907d7c5381ef0b
+        sha256: fe81bf9bfd25a53bf6964b407ba18d24961b7f11ca7ba7ef27e09b846da17931
         x-checker-data:
           type: anitya
           project-id: 372202
           url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
           is-main-source: true
       - generated-sources.json
-      - type: patch
-        path: aarch64-nvapi.patch
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
