@@ -90,6 +90,9 @@ modules:
           url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
           is-main-source: true
       - generated-sources.json
+      - type: patch
+        path: flatbox-chown.patch
+
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
