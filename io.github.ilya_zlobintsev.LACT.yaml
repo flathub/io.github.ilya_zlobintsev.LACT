@@ -92,6 +92,8 @@ modules:
       - generated-sources.json
       - type: patch
         path: flatbox-chown.patch
+      - type: patch
+        path: dbus-run-session.patch
 
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
