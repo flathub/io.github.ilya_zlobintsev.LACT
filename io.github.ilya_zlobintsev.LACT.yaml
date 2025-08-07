@@ -29,8 +29,8 @@ modules:
       - -DBUILD_VULKANINFO=ON
     sources:
       - type: archive
-        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.319/Vulkan-Tools-1.4.319.tar.gz
-        sha256: 2237d15179237bf932bf715c21179520c4d54d41bc859e59802888ade452298a
+        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.323/Vulkan-Tools-1.4.323.tar.gz
+        sha256: 3fcb24083690e2ba577b89faa95fd37462954520b4af165ae7cd9d978613d931
         x-checker-data:
           type: anitya
           project-id: 242111
@@ -42,8 +42,8 @@ modules:
           - -DVOLK_INSTALL=ON
         sources:
           - type: archive
-            url: https://github.com/zeux/volk/archive/vulkan-sdk-1.4.313.0.tar.gz
-            sha256: d86bcf1aff499f41a3e445b55df5e393a5ce49b1bda689eb7335b0a0a54a3c0b
+            url: https://github.com/zeux/volk/archive/vulkan-sdk-1.4.321.0.tar.gz
+            sha256: 021ed905eea6f3e2cc8a60a21459ee7b43f98f32052ca30f27a3be390b7a4862
             x-checker-data:
               type: anitya
               project-id: 370476
@@ -53,8 +53,8 @@ modules:
             buildsystem: cmake-ninja
             sources:
               - type: archive
-                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.319/Vulkan-Headers-v1.4.319.tar.gz
-                sha256: d79d05def3aaa7f339f2b88b62f73072df0660fb50e9286554a043bab9f6c4dd
+                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.324/Vulkan-Headers-v1.4.324.tar.gz
+                sha256: 92c38c0eeded557050d1c0e59607316fc8fe3b5832a609e45b2a45c4fe7c2cae
                 x-checker-data:
                   type: anitya
                   project-id: 88835
@@ -82,8 +82,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.1.tar.gz
-        sha256: 435eb0c1847c15bb9fcb987ea58e61e15fca589e953d9ae6e28f31a7a6b175c0
+        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.0.tar.gz
+        sha256: fe81bf9bfd25a53bf6964b407ba18d24961b7f11ca7ba7ef27e09b846da17931
         x-checker-data:
           type: anitya
           project-id: 372202
