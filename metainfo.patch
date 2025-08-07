@@ -1,0 +1,20 @@
+commit 47e3b75ccef5ef6773483e766b7fb39678b897e5
+Author: Ilya Zlobintsev <ilya.zl@protonmail.com>
+Date:   Thu Aug 7 23:34:21 2025 +0300
+
+    chore: update metainfo
+
+diff --git a/res/io.github.ilya_zlobintsev.LACT.metainfo.xml b/res/io.github.ilya_zlobintsev.LACT.metainfo.xml
+index 5c6c159..94538d5 100644
+--- a/res/io.github.ilya_zlobintsev.LACT.metainfo.xml
++++ b/res/io.github.ilya_zlobintsev.LACT.metainfo.xml
+@@ -53,6 +53,9 @@
+     <display_length compare="ge">827</display_length>
+   </requires>
+   <releases>
++    <release version="0.8.1" date="2025-08-07">
++      <url>https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.8.1</url>
++    </release>
+     <release version="0.8.0" date="2025-06-28">
+       <url>https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.8.0</url>
+     </release>
