@@ -97,6 +97,7 @@ modules:
       env:
         CARGO_HOME: /run/build/lact/cargo
         PREFIX: /app
+        VERGEN_GIT_SHA: b65ae69
     build-commands:
       - cargo --offline fetch --manifest-path Cargo.toml
       - cargo --offline build -p lact --release
