@@ -82,8 +82,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.3.tar.gz
-        sha256: f604b26fadfa4a53d5aaa7c8d8953dc8989710a8d68b3778efbde29ad7889bb0
+        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.8.4.tar.gz
+        sha256: 9dd7e6bf700a9b0c22f320bf062956e84a78a7854c0a6fbc152c644e311e3c12
         x-checker-data:
           type: anitya
           project-id: 372202
