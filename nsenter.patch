@@ -1,0 +1,94 @@
+From 8b067fac87388dd159d280c981a412897399ad0c Mon Sep 17 00:00:00 2001
+From: Ilya Zlobintsev <ilya.zl@protonmail.com>
+Date: Sun, 8 Feb 2026 13:50:38 +0200
+Subject: [PATCH] feat: don't depend on dbus for flatpak service operation,
+ force unconfined apparmor (#902)
+
+* feat: don't depend on dbus for flatpak service operation
+
+* feat: bump flatbox
+
+* feat: use apparmor unconfined
+---
+ flatpak/daemon.sh                           |  2 +-
+ flatpak/io.github.ilya_zlobintsev.LACT.yaml |  8 ++++----
+ lact-daemon/src/server/profiles/gamemode.rs | 10 ++++++++--
+ lact-daemon/src/system.rs                   |  7 +++++--
+ 4 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/flatpak/daemon.sh b/flatpak/daemon.sh
+index bcfe0eb3..82788502 100755
+--- a/flatpak/daemon.sh
++++ b/flatpak/daemon.sh
+@@ -9,4 +9,4 @@ FLATPAK_USER_DIR=/home/${FLATPAK_INSTALL_USER}/.local/share/flatpak
+ export LACT_DAEMON_SOCKET_PATH="/run/host/root/run/lactd.sock"
+ export LACT_DAEMON_CONFIG_DIR="/run/host/root/etc/lact"
+ 
+-exec dbus-run-session $FLATBOX_BIN run --flatpak-install-path $FLATPAK_USER_DIR --app io.github.ilya_zlobintsev.LACT lact daemon
++exec $FLATBOX_BIN run --flatpak-install-path $FLATPAK_USER_DIR --app io.github.ilya_zlobintsev.LACT --apparmor-unconfined lact daemon
+diff --git a/flatpak/io.github.ilya_zlobintsev.LACT.yaml b/flatpak/io.github.ilya_zlobintsev.LACT.yaml
+index 85799b71..f613210a 100644
+--- a/flatpak/io.github.ilya_zlobintsev.LACT.yaml
++++ b/flatpak/io.github.ilya_zlobintsev.LACT.yaml
+@@ -97,15 +97,15 @@ modules:
+       - type: archive
+         only-arches:
+           - x86_64
+-        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.5/flatbox-Linux-musl-x86_64.tar.gz
++        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.6/flatbox-Linux-musl-x86_64.tar.gz
+         strip-components: 0
+-        sha256: 6d0abf8b5e553422c2d1c36b04f3b5e750ef9cef2366367d28aae7654f8e0171
++        sha256: a166fc6dc569db30e113e5ee8a43f87f0381fc247d4c0a83173e30a6630a70a5
+       - type: archive
+         only-arches:
+           - aarch64
+-        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.5/flatbox-Linux-musl-arm64.tar.gz
++        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.6/flatbox-Linux-musl-arm64.tar.gz
+         strip-components: 0
+-        sha256: af5cf366eb345bc5c9289e3d8d19b03371bf31ab1ea35548308a82ccacebde67
++        sha256: 39f4373be5b749c3ce3c935c3bf6355ac474f6ff528a5b5ff1fb017e63b3be20
+ 
+   - name: lact
+     buildsystem: simple
+diff --git a/lact-daemon/src/server/profiles/gamemode.rs b/lact-daemon/src/server/profiles/gamemode.rs
+index b5b6866a..c461d50e 100644
+--- a/lact-daemon/src/server/profiles/gamemode.rs
++++ b/lact-daemon/src/server/profiles/gamemode.rs
+@@ -30,8 +30,14 @@ impl GameModeConnector {
+     pub fn new(process_list: &ProfileProcessMap) -> Option<Self> {
+         let mut base_args: Vec<OsString> = vec![];
+         let program_name = if *IS_FLATBOX {
+-            base_args.extend_from_slice(&["--host".into(), "sudo".into()]);
+-            "flatpak-spawn"
++            base_args.extend_from_slice(&[
++                "--target".into(),
++                "1".into(),
++                "--all".into(),
++                "--".into(),
++                "sudo".into(),
++            ]);
++            "nsenter"
+         } else {
+             "sudo"
+         };
+diff --git a/lact-daemon/src/system.rs b/lact-daemon/src/system.rs
+index c0bbafbf..86457951 100644
+--- a/lact-daemon/src/system.rs
++++ b/lact-daemon/src/system.rs
+@@ -251,8 +251,11 @@ pub async fn run_command(exec: &str, args: &[&str]) -> anyhow::Result<Output> {
+ 
+     let mut command;
+     if *IS_FLATBOX {
+-        command = Command::new("flatpak-spawn");
+-        command.arg("--host").arg(exec).args(args);
++        command = Command::new("nsenter");
++        command
++            .args(["--target", "1", "--all", "--"])
++            .arg(exec)
++            .args(args);
+     } else {
+         command = Command::new(exec);
+         command.args(args);
+-- 
+2.53.0
+
