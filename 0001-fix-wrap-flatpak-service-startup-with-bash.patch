@@ -1,0 +1,25 @@
+From 87d47619eb1b443376525538c1cc0067b8f0a7bc Mon Sep 17 00:00:00 2001
+From: Ilya Zlobintsev <ilya.zl@protonmail.com>
+Date: Mon, 25 May 2026 10:20:20 +0300
+Subject: [PATCH] fix: wrap flatpak service startup with bash
+
+---
+ flatpak/startup.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flatpak/startup.sh b/flatpak/startup.sh
+index 5e157dee..6ac33f7d 100755
+--- a/flatpak/startup.sh
++++ b/flatpak/startup.sh
+@@ -45,7 +45,7 @@ After=multi-user.target
+ 
+ [Service]
+ Environment=FLATPAK_INSTALL_USER=$USER
+-ExecStart=$DAEMON_SH_PATH
++ExecStart=bash $DAEMON_SH_PATH
+ Nice=-10
+ Restart=on-failure
+ 
+-- 
+2.54.0
+

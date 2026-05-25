@@ -119,6 +119,8 @@ modules:
           url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
           is-main-source: true
       - generated-sources.json
+      - type: patch
+        path: 0001-fix-wrap-flatpak-service-startup-with-bash.patch
 
     build-options:
       append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
