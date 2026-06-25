@@ -54,14 +54,14 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/amdgpu-sysfs/amdgpu-sysfs-0.20.0.crate",
-        "sha256": "8c17fa9dd35c209d782edb0aca1bdf75ccbd37a2fcf989dfcec92733b32818de",
-        "dest": "cargo/vendor/amdgpu-sysfs-0.20.0"
+        "url": "https://static.crates.io/crates/amdgpu-sysfs/amdgpu-sysfs-0.21.0.crate",
+        "sha256": "4c67148270d0240773b7c69d6a98949a0f1e20fe91a756add562b5e6d3de3cf2",
+        "dest": "cargo/vendor/amdgpu-sysfs-0.21.0"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"8c17fa9dd35c209d782edb0aca1bdf75ccbd37a2fcf989dfcec92733b32818de\", \"files\": {}}",
-        "dest": "cargo/vendor/amdgpu-sysfs-0.20.0",
+        "contents": "{\"package\": \"4c67148270d0240773b7c69d6a98949a0f1e20fe91a756add562b5e6d3de3cf2\", \"files\": {}}",
+        "dest": "cargo/vendor/amdgpu-sysfs-0.21.0",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -2173,14 +2173,53 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/libdrm_amdgpu_sys/libdrm_amdgpu_sys-0.8.13.crate",
-        "sha256": "380c3cfe531e0237f58a16c75710b17eaa006614c6ab115efa921ac8b019c25b",
-        "dest": "cargo/vendor/libdrm_amdgpu_sys-0.8.13"
+        "url": "https://static.crates.io/crates/libdisplay-info/libdisplay-info-0.3.0.crate",
+        "sha256": "59fd96dbb2381ff31f314f07accbdf8550febdcc5cd8761ecaf7c1763361c359",
+        "dest": "cargo/vendor/libdisplay-info-0.3.0"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"380c3cfe531e0237f58a16c75710b17eaa006614c6ab115efa921ac8b019c25b\", \"files\": {}}",
-        "dest": "cargo/vendor/libdrm_amdgpu_sys-0.8.13",
+        "contents": "{\"package\": \"59fd96dbb2381ff31f314f07accbdf8550febdcc5cd8761ecaf7c1763361c359\", \"files\": {}}",
+        "dest": "cargo/vendor/libdisplay-info-0.3.0",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/libdisplay-info-derive/libdisplay-info-derive-0.1.1.crate",
+        "sha256": "8dc2c710cf5819e91220a446d9e64acc6814386cc22c509c3f0df83c0b874a98",
+        "dest": "cargo/vendor/libdisplay-info-derive-0.1.1"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"8dc2c710cf5819e91220a446d9e64acc6814386cc22c509c3f0df83c0b874a98\", \"files\": {}}",
+        "dest": "cargo/vendor/libdisplay-info-derive-0.1.1",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/libdisplay-info-sys/libdisplay-info-sys-0.3.0.crate",
+        "sha256": "26590d55b8819f9c6b0d95d9d12dc9edbfd1f2413e88814a33b631ac049bb51f",
+        "dest": "cargo/vendor/libdisplay-info-sys-0.3.0"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"26590d55b8819f9c6b0d95d9d12dc9edbfd1f2413e88814a33b631ac049bb51f\", \"files\": {}}",
+        "dest": "cargo/vendor/libdisplay-info-sys-0.3.0",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/libdrm_amdgpu_sys/libdrm_amdgpu_sys-0.8.16.crate",
+        "sha256": "1e11704169b7b5a043ec5627aa0433019cf67d07f233002e1233edf67c2e662b",
+        "dest": "cargo/vendor/libdrm_amdgpu_sys-0.8.16"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"1e11704169b7b5a043ec5627aa0433019cf67d07f233002e1233edf67c2e662b\", \"files\": {}}",
+        "dest": "cargo/vendor/libdrm_amdgpu_sys-0.8.16",
         "dest-filename": ".cargo-checksum.json"
     },
     {
