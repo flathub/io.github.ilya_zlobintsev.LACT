@@ -1,0 +1,17 @@
+diff --git a/lact-gui/src/app.rs b/lact-gui/src/app.rs
+index b27327ce..728e0d88 100644
+--- a/lact-gui/src/app.rs
++++ b/lact-gui/src/app.rs
+@@ -420,9 +420,9 @@ impl AsyncComponent for AppModel {
+             .expect("Could not list devices");
+         let initial_gpu_id = AppModel::init_gpu_selection(&devices);
+ 
+-        if !system_info.version.is_current() && !daemon_config_shown {
+-            sender.input(AppMsg::ShowServiceSetupDialog);
+-        }
++        // if !system_info.version.is_current() && !daemon_config_shown {
++        //     sender.input(AppMsg::ShowServiceSetupDialog);
++        // }
+ 
+         let info_page = InformationPage::detach_default();
+ 
