@@ -12,7 +12,7 @@ finish-args:
   - --socket=wayland
   - --device=dri
   - --talk-name=org.freedesktop.Flatpak
-  - --system-talk-name=org.freedesktop.systemd1
+  # - --system-talk-name=org.freedesktop.systemd1
   - --filesystem=/run/lactd.sock
 cleanup:
   - /include
@@ -135,8 +135,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.10.0.tar.gz
-        sha256: 4bb1a5066fe2071acee72b0c813e087c9a3060bc35f5e3ec4909fb4cb3e69ea0
+        url: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.10.1.tar.gz
+        sha256: cbbbd0336fb65ce539ea29d99fe2e38f7c82de08c07d26dfab355735a88d853c
         x-checker-data:
           type: anitya
           project-id: 372202
