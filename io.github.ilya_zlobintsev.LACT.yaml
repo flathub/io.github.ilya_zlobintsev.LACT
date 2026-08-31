@@ -142,6 +142,8 @@ modules:
           project-id: 372202
           url-template: https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$version.tar.gz
           is-main-source: true
+      - type: patch
+        path: dont-show-version-mismatch.patch
       - generated-sources.json
 
     build-options:
