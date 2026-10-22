@@ -1,10 +1,10 @@
 app-id: io.github.ilya_zlobintsev.LACT
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm22
 command: startup.sh
 finish-args:
   - --share=ipc
@@ -147,8 +147,8 @@ modules:
       - generated-sources.json
 
     build-options:
-      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm22/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
       env:
         CARGO_HOME: /run/build/lact/cargo
         PREFIX: /app
@@ -178,4 +178,3 @@ modules:
           - /share/icons
         modules:
           - shared-modules/intltool/intltool-0.51.json
-
